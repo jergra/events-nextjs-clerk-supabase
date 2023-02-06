@@ -230,7 +230,7 @@ export default function Home() {
       </main>
       <footer className='mt-[500px] mb-14'>
         <a
-          href="https://github.com/jergra/events-next-js-clerk-supabase"
+          href="https://github.com/jergra/events-nextjs-clerk-supabase"
           target='_blank'
           rel='noreferrer'
           className='text-slate-300'
