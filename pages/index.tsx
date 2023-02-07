@@ -216,19 +216,21 @@ export default function Home() {
                 key={event.id}
                 onClick={() => router.push(`/event?id=${event.id}`)}
               >
-                  <div className='flex mb-2'>
-                    {/* <div className='w-[200px] flex flex-col p-1'>{format(new Date(`${event.date}`), 'MMMM dd, yyyy')}</div> */}
-                    <div className='w-[200px] flex flex-col p-1'>{datesArray[index]}</div>
-                    
-                    <div className='flex flex-col p-1'>{event.time}</div>
+                  <div className='flex justify-center rounded my-2'>
+                    <div className='whitespace-pre-wrap rounded bg-slate-50 text-2xl'>{event.basics}</div>
                   </div>
-                  <div className='p-1 mb-2 whitespace-pre-wrap'>{event.basics}</div>
-                  <div className='p-1 whitespace-pre-wrap'>{event.location}</div>
+                  <div className='flex justify-between mb-2'>
+                    <div className='flex'>
+                      <div className='w-[200px] flex flex-col p-1'>{datesArray[index]}</div>
+                      <div className='flex flex-col p-1'>{event.time}</div>
+                    </div>
+                    <div className='p-1 whitespace-pre-wrap'>{event.location}</div>
+                  </div>
               </div>
             ))}
         </div>
       </main>
-      <footer className='mt-[500px] mb-14'>
+      <footer className='mt-[200px] mb-14'>
         <a
           href="https://github.com/jergra/events-nextjs-clerk-supabase"
           target='_blank'
