@@ -101,7 +101,7 @@ export default function Create() {
                             <option value="Visual Arts">Visual Arts</option>
                             <option value="Shows">Shows</option>
                             <option value="Food & Drink">Food & Drink</option>
-                            <option value="Fitness">Fitness</option>
+                            <option value="Sports & Fitness">Sports & Fitness</option>
                             <option value="Kids">Kids</option>
                         </select>
                     </div>
