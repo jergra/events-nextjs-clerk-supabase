@@ -109,11 +109,11 @@ export default function Create() {
             </div>
             <div className='flex mb-5'>
                 <div className='flex flex-col w-[50%] mr-5'>
-                    <label htmlFor='description'>Basic Info</label>
+                    <label htmlFor='description'>Event</label>
                     <textarea
                         value={basics}
                         onChange={(e) => setBasics(e.target.value)}
-                        className='h-20 input input-bordered bg-slate-50'
+                        className='h-18 input input-bordered bg-slate-50'
                     ></textarea>
                 </div>
                 <div className=' w-[50%]'>
