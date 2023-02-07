@@ -69,8 +69,8 @@ export default function Recipe() {
           <div>Price: {price}</div>
         </div>
         <div className='flex mb-7'>
-          <pre className="w-[50%] pr-5 whitespace-pre-wrap">{basics}</pre>
-          <div className='w-[50%] '>
+          <pre className="w-[55%] pr-6 whitespace-pre-wrap text-xl">{basics}</pre>
+          <div className='w-[45%] '>
             <pre className="whitespace-pre-wrap">{location}</pre>
             <pre className="whitespace-pre-wrap">{address}</pre>
           </div>
