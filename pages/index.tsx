@@ -24,6 +24,7 @@ export default function Home() {
   const [range, setRange] = useState<any>(50000);
   const [datesArray, setDatesArray] = useState<any>()
   const router = useRouter();
+  
 
   const handleSubmit = async (e: any) => {
       e.preventDefault();
@@ -212,7 +213,7 @@ export default function Home() {
         <div className='mt-10 w-2/3'>
             {eventData?.map((event: any, index: any) => (
                 <div
-                    className='flex flex-col mb-4 cursor-pointer text-xl bg-gray-50 p-2 rounded-lg shadow-md hover:shadow-lg'
+                    className='flex flex-col mb-6 cursor-pointer text-xl bg-gray-50 p-2 rounded-lg shadow-md hover:shadow-lg'
                     key={event.id}
                     onClick={() => router.push(`/event?id=${event.id}`)}
                 >
@@ -231,7 +232,7 @@ export default function Home() {
         </div>
 
       </main>
-      <footer className='mt-[200px] mb-14'>
+      <footer className='mt-[140px] mb-14'>
         <a
           href="https://github.com/jergra/events-nextjs-clerk-supabase"
           target='_blank'
