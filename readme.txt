@@ -10,7 +10,7 @@ Derived from live tutorial:
     by James Perkins 
 
 An 'events' website built with nextjs, clerk, supabase, tailwind, geolocation,
-with help from chatgpt.
+dark mode, with help from chatgpt.
 
 The visitor can vary the events shown by category and distance away.
 
