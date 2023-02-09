@@ -49,7 +49,7 @@ export default function Create() {
         </Head>
         <form 
             onSubmit={handleSubmit}
-            className='mt-10 mb-60 bg-gray-50 w-[80%] p-5 rounded-lg shadow-lg'
+            className='mt-10 mb-60 bg-gray-50 dark:bg-zinc-700 dark:text-white w-[80%] p-5 rounded-lg shadow-lg'
         >
             <div className='flex justify-between'>
                 <div className='flex mb-5'>
@@ -59,7 +59,7 @@ export default function Create() {
                             type='date'
                             value={date}
                             onChange={(e) => setDate(e.target.value)}
-                            className='input input-bordered w-40 '
+                            className='input input-bordered w-40 dark:bg-zinc-500 dark:text-white'
                         ></input>
                     </div>
                     <div className='flex flex-col'>
@@ -69,7 +69,7 @@ export default function Create() {
                             value={time}
                             placeholder='7:30 pm'
                             onChange={(e) => setTime(e.target.value)}
-                            className='input input-bordered w-[180px] '
+                            className='input input-bordered w-[180px] dark:bg-zinc-500 dark:text-white'
                         ></input>
                     </div>
                 </div>
@@ -80,7 +80,7 @@ export default function Create() {
                             type='text'
                             value={price}
                             onChange={(e) => setPrice(e.target.value)}
-                            className='input input-bordered w-[220px] '
+                            className='input input-bordered w-[220px] dark:bg-zinc-500 dark:text-white'
                         ></input>
                     </div>
                     <div className='flex flex-col'>
@@ -88,7 +88,7 @@ export default function Create() {
                         <select
                             value={category}
                             onChange={(e) => setCategory(e.target.value)}
-                            className='input input-bordered w-30 '
+                            className='input input-bordered w-30 dark:bg-zinc-500 dark:text-white'
                         >
                             <option value="">Select</option>
                             <option value="Classical Music">Classical Music</option>
@@ -113,7 +113,7 @@ export default function Create() {
                     <textarea
                         value={basics}
                         onChange={(e) => setBasics(e.target.value)}
-                        className='h-18 input input-bordered '
+                        className='h-18 input input-bordered dark:bg-zinc-500 dark:text-white'
                     ></textarea>
                 </div>
                 <div className=' w-[50%]'>
@@ -122,7 +122,7 @@ export default function Create() {
                         <textarea
                             value={location}
                             onChange={(e) => setLocation(e.target.value)}
-                            className='input input-bordered '
+                            className='input input-bordered dark:bg-zinc-500 dark:text-white'
                         ></textarea>
                     </div>
                     <div className='flex flex-col'>
@@ -130,7 +130,7 @@ export default function Create() {
                         <textarea
                             value={address}
                             onChange={(e) => setAddress(e.target.value)}
-                            className='h-20 input input-bordered '
+                            className='h-20 input input-bordered dark:bg-zinc-500 dark:text-white'
                         ></textarea>
                     </div>
                 </div>
@@ -141,18 +141,16 @@ export default function Create() {
                     <textarea
                         value={description}
                         onChange={(e) => setDescription(e.target.value)}
-                        className='h-[180px] input input-bordered '
+                        className='h-[180px] input input-bordered dark:bg-zinc-500 dark:text-white'
                     ></textarea>
                 </div>
             <div className='flex justify-start mt-8'>
                 <button 
                     type='submit' 
-                    className='inline-block px-4 py-3
-                    text-lg font-semibold text-center
-                    text-white uppercase transition
-                    duration-200 ease-in-out bg-indigo-600 
-                    rounded-md cursor-pointer
-                    hover:bg-indigo-700 w-[150px]'
+                    className='inline-block px-10 py-3 text-lg font-semibold text-center
+                    text-white uppercase transition duration-200 ease-in-out 
+                    rounded-md cursor-pointer bg-indigo-600 hover:bg-indigo-700 
+                    dark:bg-indigo-700 dark:hover:bg-indigo-800'
                 >Save</button>
             </div>
         </form>

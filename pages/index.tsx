@@ -141,19 +141,21 @@ export default function Home() {
                                 
       </Head>
       <main className='flex flex-col w-full items-center'>
-        <div className='mt-10 w-2/3 flex justify-between'>
+        <div className='mt-10 w-2/3 flex justify-between items-center'>
           <form 
               onSubmit={handleSubmit} 
               className='flex'
           >
+            <div className='flex items-center'>
             <div className="relative rounded-md mr-2">
               <select 
                   value={category}
                   onChange={(e) => setCategory(e.target.value)} 
                   className="form-input py-2 px-3 block leading-5 rounded-md 
-                    transition duration-150 ease-in-out bg-gray-50 border 
+                    transition duration-150 ease-in-out bg-gray-50 
+                    dark:bg-zinc-600 dark:text-white border 
                     border-gray-300 focus:outline-none 
-                    focus:shadow-outline-indigo-400 focus:border-indigo-400"
+                    focus:shadow-outline-indigo-300 focus:border-indigo-300"
               >
                 <option value="">Category</option>
                 <option value="All">All</option>
@@ -176,9 +178,10 @@ export default function Home() {
                   value={range} 
                   onChange={(e) => setRange(e.target.value)} 
                   className="form-input py-2 px-3 block leading-5 rounded-md 
-                    transition duration-150 ease-in-out bg-gray-50 border 
+                    transition duration-150 ease-in-out bg-gray-50 
+                    dark:bg-zinc-600 dark:text-white border 
                     border-gray-300 focus:outline-none 
-                    focus:shadow-outline-indigo-400 focus:border-indigo-400"
+                    focus:shadow-outline-indigo-300 focus:border-indigo-300"
               >
                 <option value='50000'>Distance</option>
                 <option value='5'>Less than 5 km</option>
@@ -190,35 +193,32 @@ export default function Home() {
             </div>
             <button 
                 type='submit'
-                className='inline-block px-4 py-3
-                text-sm font-semibold text-center
-                text-white uppercase transition
-                duration-200 ease-in-out bg-indigo-600 
-                rounded-md cursor-pointer
-                hover:bg-indigo-700 max-w-lg'
+                className='inline-block px-4 py-3 text-lg font-semibold text-center
+              text-white uppercase transition duration-200 ease-in-out 
+              rounded-md cursor-pointer bg-indigo-600 hover:bg-indigo-700 
+              dark:bg-indigo-700 dark:hover:bg-indigo-800'
               >Apply</button>
-            </form>
-            <Link href='/add-event'>
-              <button 
-                className='inline-block px-4 py-3
-                text-sm font-semibold text-center
-                text-white uppercase transition
-                duration-200 ease-in-out bg-indigo-600 
-                rounded-md cursor-pointer
-                hover:bg-indigo-700 max-w-lg'
-              >Add Event</button>
-            </Link> 
+              </div>
+          </form>
+          <Link href='/add-event'>
+            <button 
+              className='inline-block px-4 py-3 text-lg font-semibold text-center
+              text-white uppercase transition duration-200 ease-in-out 
+              rounded-md cursor-pointer bg-indigo-600 hover:bg-indigo-700 
+              dark:bg-indigo-700 dark:hover:bg-indigo-800'
+            >Add Event</button>
+          </Link> 
         </div>
 
         <div className='mt-10 w-2/3'>
             {eventData?.map((event: any, index: any) => (
                 <div
-                    className='flex flex-col mb-6 cursor-pointer text-xl bg-gray-50 p-2 rounded-lg shadow-md hover:shadow-lg'
+                    className='flex flex-col mb-6 cursor-pointer text-xl bg-gray-50 dark:bg-zinc-600 dark:text-white  p-2 rounded-lg shadow-md hover:shadow-lg'
                     key={event.id}
                     onClick={() => router.push(`/event?id=${event.id}`)}
                 >
-                    <div className='flex justify-center rounded-full mb-2'>
-                        <div className='whitespace-pre-wrap rounded-full bg-gray-100 text-2xl font-bold p-2'>{event.basics}</div>
+                    <div className='flex justify-center mb-2'>
+                        <div className='whitespace-pre-wrap rounded-full bg-gray-100 dark:bg-zinc-700 text-2xl font-bold px-4 py-2'>{event.basics}</div>
                     </div>
                     <div className='flex justify-between mb-2'>
                         <div className='flex'>
@@ -237,7 +237,7 @@ export default function Home() {
           href="https://github.com/jergra/events-nextjs-clerk-supabase"
           target='_blank'
           rel='noreferrer'
-          className='text-gray-800'
+          className='text-gray-900 dark:text-white'
         >
           <AiFillGithub size={40} />
         </a>

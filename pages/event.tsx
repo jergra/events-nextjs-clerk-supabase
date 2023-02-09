@@ -60,7 +60,7 @@ export default function Recipe() {
         <link rel="icon" href="/calendar.svg" />
         {/* Icon by <a href="https://freeicons.io/profile/3">icon king1</a> on <a href="https://freeicons.io">freeicons.io</a> */}
       </Head>
-      <div className='w-3/4 h-fit p-5 mb-60 bg-gray-50 rounded-lg shadow-lg'>
+      <div className='w-3/4 h-fit p-5 mb-60 bg-gray-50 dark:bg-zinc-600 dark:text-white rounded-lg shadow-lg'>
         <div className='mb-10 flex justify-between'>
           <div className='flex'>
             <div className='w-[200px] text-lg font-semibold'>{dateString}</div>
