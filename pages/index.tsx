@@ -22,9 +22,26 @@ export default function Home() {
   const [eventData, setEventData] = useState<any>();
   const [category, setCategory] = useState<any>('');
   const [range, setRange] = useState<any>(50000);
-  const [datesArray, setDatesArray] = useState<any>()
   const router = useRouter();
   
+
+  const transformDate = (rawDate: any) => {
+      const dt = new Date(rawDate);
+      //console.log('rawDate:', rawDate)
+      const year = dt.getUTCFullYear()
+      const month = dt.getUTCMonth()
+      const day = dt.getUTCDate()
+      //console.log('month, day, year:', month, day, year)
+      const monthNames = ["January", "February", "March", "April", "May", "June",
+        "July", "August", "September", "October", "November", "December"
+      ];
+      //console.log('monthName, day, year:', monthNames[month], day, year)
+      const transformedDate = monthNames[month].toString() + ' ' + day.toString() + ', ' + year.toString()
+    
+    //console.log('transformedDate:', transformedDate)
+    
+    return transformedDate
+  }
 
   const handleSubmit = async (e: any) => {
       e.preventDefault();
@@ -76,23 +93,6 @@ export default function Home() {
       console.log('rows.data1:', rows.data)
       
       if (rows.data) {
-        const dates: any = []
-        for (let i=0;i<rows.data.length;i++) {
-          const dt = new Date(rows.data[i].date);
-          //console.log('rows.data[i].date:', rows.data[i].date)
-          const year = dt.getUTCFullYear()
-          const month = dt.getUTCMonth()
-          const day = dt.getUTCDate()
-          //console.log('month, day, year:', month, day, year)
-          const monthNames = ["January", "February", "March", "April", "May", "June",
-            "July", "August", "September", "October", "November", "December"
-          ];
-          //console.log('monthName, day, year:', monthNames[month], day, year)
-          dates.push(monthNames[month].toString() + ' ' + day.toString() + ', ' + year.toString())
-        }
-        //console.log('dates', dates)
-        setDatesArray(dates)
-        //console.log('datesArray:', datesArray)
         console.log('lat, lng used in fetch:', lat, lng)
         for (let j=0;j<rows.data.length;j++) {
           fetch(`https://geocode.maps.co/search?q=${rows.data[j].address}`)
@@ -222,7 +222,7 @@ export default function Home() {
                     </div>
                     <div className='flex justify-between mb-2'>
                         <div className='flex'>
-                            <div className='w-[200px] flex flex-col p-1 font-medium'>{datesArray[index]}</div>
+                            <div className='w-[200px] flex flex-col p-1 font-medium'>{transformDate(event.date)}</div>
                             <div className='flex flex-col p-1 font-medium'>{event.time}</div>
                         </div>
                         <div className='p-1 whitespace-pre-wrap font-medium'>{event.location}</div>
