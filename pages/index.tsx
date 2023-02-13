@@ -232,7 +232,7 @@ export default function Home() {
         </div>
 
       </main>
-      <footer className='mt-[140px] mb-14'>
+      <footer className='mt-[140px] mb-[400px]'>
         <a
           href="https://github.com/jergra/events-nextjs-clerk-supabase"
           target='_blank'

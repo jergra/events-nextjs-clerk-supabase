@@ -73,7 +73,7 @@ export default function Recipe() {
             <pre className="whitespace-pre-wrap text-2xl font-bold">{basics}</pre>
           </div>
           <div className='w-[45%]'>
-            <pre className="font-bold whitespace-pre-wrap">{location}</pre>
+            <pre className="font-semibold whitespace-pre-wrap text-lg">{location}</pre>
             <pre className="whitespace-pre-wrap">{address}</pre>
           </div>
         </div>

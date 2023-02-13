@@ -10,7 +10,7 @@ export const Header = () => {
         <header className="transition
         duration-200 ease-in-out bg-indigo-600 hover:bg-indigo-700 dark:bg-indigo-700 dark:hover:bg-indigo-800">
             <div className='flex'>
-                <div className='w-11/12'>
+                <div className='w-[95%]'>
                     <Link href='/'>
                         <div className='flex justify-between items-center p-4 text-slate-50'>
                             <div>
@@ -35,7 +35,7 @@ export const Header = () => {
                         </div>
                     </Link>
                 </div>
-                <div className='flex justify-center items-center w-1/12'>
+                <div className='flex justify-center items-center w-[5%]'>
                     <DarkModeButton />
                 </div>
             </div>
