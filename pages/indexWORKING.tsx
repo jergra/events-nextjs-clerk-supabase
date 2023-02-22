@@ -19,45 +19,48 @@ export default function Home() {
   const {getToken} = useAuth()
   //const {user} = useUser()
 
-  const [eventData, setEventData] = useState<any>([]);
+  const [eventData, setEventData] = useState<any>();
   const [category, setCategory] = useState<any>('');
   const [range, setRange] = useState<any>(50000);
-  const [selected, setSelected] = useState<any>([])
   const router = useRouter();
   
 
   const transformDate = (rawDate: any) => {
       const dt = new Date(rawDate);
+      //console.log('rawDate:', rawDate)
       const year = dt.getUTCFullYear()
       const month = dt.getUTCMonth()
       const day = dt.getUTCDate()
+      //console.log('month, day, year:', month, day, year)
       const monthNames = ["January", "February", "March", "April", "May", "June",
         "July", "August", "September", "October", "November", "December"
       ];
+      //console.log('monthName, day, year:', monthNames[month], day, year)
       const transformedDate = monthNames[month].toString() + ' ' + day.toString() + ', ' + year.toString()
     
-      return transformedDate
+    //console.log('transformedDate:', transformedDate)
+    
+    return transformedDate
   }
 
   const handleSubmit = async (e: any) => {
       e.preventDefault();
+      const today = format(new Date(), 'yyyy-MM-dd')
+      const supabaseToken = await getToken({template: 'supabase'})
+      const supabase = await supabaseClient(supabaseToken!)
+      let query = supabase.from('events').select();
       console.log('range:', range)
-      console.log('category:', category)
-      console.log('eventData:', eventData)
-      const selectedEvents = []
-      for (let i=0;i<eventData.length;i++) {
-        if (category === 'All') {
-            if (eventData[i].kilometers < range) {
-                selectedEvents.push(eventData[i])
-            }
-        } else {
-            if (eventData[i].kilometers < range && eventData[i].category === category) {
-                selectedEvents.push(eventData[i])
-            }
-        }
+      if (category === 'All') {
+        const rows = await query.gte('date', today).order('date').lt('distance', range)
+        console.log('rows.data4:', rows.data)
+        setEventData(rows.data)
+        console.log('eventData4:', eventData)
+      } else {
+        const rows = await query.gte('date', today).order('date').lt('distance', range).eq('category', category)
+        console.log('rows.data5:', rows.data)
+        setEventData(rows.data)
+        console.log('eventData5:', eventData)
       }
-      console.log('selectedEvents:', selectedEvents)
-      setSelected(selectedEvents)
   }
 
   useEffect(() => {
@@ -99,20 +102,32 @@ export default function Home() {
                 const dist = findDistance(lat, data[0].lat, lng, data[0].lon)
                 
                 var distance = dist/1000
-
-                rows.data[j].kilometers = distance
-            
-            }).catch(err => console.log('Request Failed', err)); 
+                console.log('distance:', distance)
+                if (!distance) {
+                  distance = 10
+                }
+                const changeDistance = async () => {
+                  const supabaseToken = await getToken({template: 'supabase'})
+                  const supabase = await supabaseClient(supabaseToken!)
+                  const{data, error} = await supabase
+                    .from('events')
+                    .update({distance: distance})
+                    .eq('id', rows.data[j].id)
+                  // console.log('DATA:', data)
+                  // console.log('ERROR:', error)
+                }
+                changeDistance()
+                
+          }).catch(err => console.log('Request Failed', err)); // Catch errors
         }
-        console.log('rows.data with kilometers away:', rows.data)
       }
       
       setEventData(rows.data)
-      setSelected(rows.data)
       console.log('eventData1:', eventData)
     }
 
     fetchData()
+    console.log('eventData2:', eventData)
   
   }, [lat]);
 
@@ -196,7 +211,7 @@ export default function Home() {
         </div>
 
         <div className='mt-10 w-2/3'>
-            {selected?.map((event: any) => (
+            {eventData?.map((event: any, index: any) => (
                 <div
                     className='flex flex-col mb-6 cursor-pointer text-xl bg-gray-50 dark:bg-zinc-600 dark:text-white  p-2 rounded-lg shadow-md hover:shadow-lg'
                     key={event.id}

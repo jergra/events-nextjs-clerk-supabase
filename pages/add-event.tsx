@@ -32,8 +32,7 @@ export default function Create() {
             location: location,
             address: address,
             basics: basics,
-            description: description,
-            distance: 12
+            description: description
         })
         console.log('DATA:', data)
         console.log('ERROR:', error)

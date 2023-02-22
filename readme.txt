@@ -47,7 +47,6 @@ These are the columns:
     basics          text 
     description     text
     price           text 
-    distance        float8 
 
 
 .env.local looks like this:
