@@ -204,7 +204,9 @@ export default function Home() {
                     onClick={() => router.push(`/event?id=${event.id}`)}
                 >
                     <div className='flex justify-center mb-2'>
-                        <div className='whitespace-pre-wrap rounded-full bg-gray-100 dark:bg-zinc-700 text-2xl font-bold px-4 py-2'>{event.basics}</div>
+                        <div className='whitespace-pre-wrap rounded-full bg-gray-100 dark:bg-zinc-700 text-2xl font-bold px-4 py-2 text-center'>
+                            {event.basics}
+                        </div>
                     </div>
                     <div className='flex justify-between mb-2'>
                         <div className='flex'>
