@@ -155,6 +155,7 @@ export default function Home() {
                 <option value="Shows">Shows</option>
                 <option value="Food & Drink">Food & Drink</option>
                 <option value="Sports & Fitness">Sports & Fitness</option>
+                <option value="Classes">Classes</option>
                 <option value="Kids">Kids</option>
               </select>
             </div>
